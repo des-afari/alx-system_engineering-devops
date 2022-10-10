@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -rl "c,A" . | xargs sed -i 's/c,A/e,Z/g'
+sed -e 's/A/Z/g' -e 's/c/e/g' .
