@@ -1,2 +1,2 @@
 #!/bin/bash
-users | tr -s ' ' '\n'
+list | tr -s ' ' '\n'
