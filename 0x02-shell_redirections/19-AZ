@@ -1,3 +1,2 @@
 #!/bin/bash
-grep -rl "c" somedir/ | xargs sed -i 's/c/e/g'
-grep -rl "A" somedir/ | xargs sed -i 's/A/Z/g'
+grep -rl "c,A" . | xargs sed -i 's/c,A/e,Z/g'
