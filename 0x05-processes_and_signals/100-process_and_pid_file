@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# create file containing PID
+echo $$ > /var/run/myscript.pid
+
+# function to handle signals
+function handle_signal {
+    if [[ $1 -eq 15 ]]; then
+        # SIGTERM
+        echo "I hate the kill command"
+        rm /var/run/myscript.pid
+        exit 0
+    elif [[ $1 -eq 2 ]]; then
+        # SIGINT
+        echo "Y U no love me?!"
+    elif [[ $1 -eq 3 ]]; then
+        # SIGQUIT
+        rm /var/run/myscript.pid
+        exit 0
+    fi
+}
+
+# register signal handlers
+trap 'handle_signal 15' TERM
+trap 'handle_signal 2' INT
+trap 'handle_signal 3' QUIT
+
+# infinite loop
+while true; do
+    echo "To infinity and beyond"
+    sleep 1
+done
