@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays all ipv4 ips on machine
+ifconfig | grep 'inet ' | cut -d ":" -f2 | cut -d " " -f1
+
