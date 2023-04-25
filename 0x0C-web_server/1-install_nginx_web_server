@@ -1,25 +1,6 @@
 #!/usr/bin/env bash
-# write a Bash script that configures a new Ubuntu machine nginx
-
-# Install nginx
-apt-get update
-apt-get install nginx -y
-
-# Configure nginx to listen on port 80
-echo "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-}" > /etc/nginx/sites-available/default
-
-# Restart nginx
-kill -9 "$(cat /var/run/nginx.pid)"
-/usr/sbin/nginx -c /etc/nginx/nginx.conf
-
-# Create default index.html file with "Hello World!"
+# installs nginx web server, listening on port 80; dummy index page
+apt-get -y update
+apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.html
+service nginx restart
