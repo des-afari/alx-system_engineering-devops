@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script configures Haproxy load balancer in a server.
+
+apt-get -y update
+apt-get install -y haproxy=1.6.*
+frontend_configuration="frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend desmond-web-backend\n"
+backend_configuration="backend desmond-web-backend\n\tbalance roundrobin\n\tmode http\n\tserver web-01 54.90.37.183:80 check\n\tserver web-02 18.234.105.229:80 check"
+sed -i "20i \\\n$frontend_configuration\n$backend_configuration" /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
