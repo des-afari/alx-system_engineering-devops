@@ -1,0 +1,41 @@
+Demystifying the Journey of a Web Request
+
+Introduction
+
+In today's interconnected world, when we type a URL like "https://www.google.com" into our browser and press Enter, we witness a remarkable chain of events that lead to the webpage appearing magically before our eyes. Understanding this process is fundamental for any software engineer, as it involves various components working in harmony to deliver web content efficiently and securely. In this blog post, we will dive into the underlying web stack, step by step, and explore what happens behind the scenes during the journey of a web request.
+
+DNS Request
+
+The journey begins with a DNS (Domain Name System) request. The browser extracts the domain name "www.google.com" from the URL and sends a query to a DNS resolver, usually provided by the ISP. The DNS resolver locates the IP address associated with the domain name through a series of queries and responses, allowing the browser to establish a connection to the correct server.
+
+TCP/IP
+
+With the IP address in hand, the browser initiates a TCP (Transmission Control Protocol) connection to the web server that hosts the requested website. TCP ensures reliable transmission of data over the network by breaking it into packets and managing their ordering and reassembly. The IP protocol then handles the routing of these packets across the Internet to reach the intended destination.
+
+Firewall
+
+Before the TCP connection is established, it often passes through a firewall—a security measure that acts as a barrier between the browser and the web server. The firewall applies a set of rules to inspect and filter network traffic, protecting against unauthorized access and potential threats.
+
+HTTPS/SSL
+
+Once the TCP connection is successfully established, the browser initiates a secure connection using HTTPS (Hypertext Transfer Protocol Secure) and SSL (Secure Sockets Layer) or its successor, TLS (Transport Layer Security). HTTPS encrypts the data exchanged between the browser and the web server, ensuring privacy and integrity. The browser verifies the server's digitalcertificate to establish trust and prevent man-in-the-middle attacks.
+
+Load-Balancer
+
+For highly trafficked websites like Google, multiple servers often work in tandem to handle incoming requests efficiently. A load-balancer acts as a traffic cop, distributing requests across these servers based on various algorithms. It helps distribute the workload evenly and enhances performance, scalability, and availability.
+
+Web Server
+
+The web server receives the encrypted request from the browser and decrypts it using the private key associated with the SSL certificate. It then processes the request, which typically involves fetching the requested webpage's resources, such as HTML, CSS, JavaScript, and images. The web server generates a response and sends it back to the browser over the established TCP connection.
+
+Application Server
+
+In more complex web applications, an application server might come into play. It processes business logic, interacts with databases, and generates dynamic content. The web server delegates tasks to the application server when required and communicates with it over protocols like HTTP or WebSocket.
+
+Database
+
+In many cases, web applications need to store and retrieve data from a database. The application server interacts with the database management system (DBMS) to perform database operations such as reading, writing, and querying. The DBMS stores the data persistently and ensures its integrity and security.
+
+Conclusion
+
+The process of loading a webpage involves numerous components working together seamlessly to deliver the desired content to our browsers. Understanding this intricate web stack is crucial for software engineers to build robust and efficient web applications. By comprehending the journey of a web request, we gain insights into the role of each component and their interactions, paving the way for optimized performance, security, and scalability. 
